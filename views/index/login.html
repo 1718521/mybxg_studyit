@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="" content="">
+    <title>学IT - 后台管理系统</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
+    <link rel="stylesheet" href="/public/less/index.css">
+</head>
+<body>
+    <!-- 登录 -->
+    <div class="login">
+        <div class="login-wrap">
+            <div class="avatar">
+                <img src="./uploads/monkey.png" class="img-circle" alt="">
+            </div>
+            <!--序列化表单需要表单控件要有name属性-->
+            <form id="loginForm" action="" class="col-xs-offset-1 col-xs-10">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="用户名" name="tc_name">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input type="password" class="form-control" placeholder="密码" name="tc_pass">
+                </div>
+                <button id="btn" type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+        $("#btn").click(function(){
+            $.ajax({
+                type:"post",
+                url:"/api/login",
+                // 虚拟主机给设置了跨域请求的命令,所以Apache自动给解析为http://api.botue.login
+                data:$('#loginForm').serialize(),
+                dataType:"json",
+                success:function(data){
+                    if(data.code == 200){
+                        //默认返回的是index.php  隐藏index.php 见Apache.md
+                        //路径是相对于域名中的路径
+                        location.href="/index.php/index/index";
+                    }
+                }
+            })
+            return false;
+        })
+    </script>
+</body>
+</html>
