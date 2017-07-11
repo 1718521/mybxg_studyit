@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="" content="">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="/public/less/index.css">
+    <?php include('/views/common/style.html'); ?>
 </head>
 <body>
     <!-- 登录 -->
@@ -35,27 +32,14 @@
         </div>
     </div>
     
-    <script src="/public/assets/jquery/jquery.min.js"></script>
-    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>-->
+    <?php include('/views/common/script.html'); ?>
+    
 
+    
     <script>
-        $("#btn").click(function(){
-            $.ajax({
-                type:"post",
-                url:"/api/login",
-                // 虚拟主机给设置了跨域请求的命令,所以Apache自动给解析为http://api.botue.login
-                data:$('#loginForm').serialize(),
-                dataType:"json",
-                success:function(data){
-                    if(data.code == 200){
-                        //默认返回的是index.php  隐藏index.php 见Apache.md
-                        //路径是相对于域名中的路径
-                        location.href="/index.php/index/index";
-                    }
-                }
-            })
-            return false;
-        })
+       require(['login']);
     </script>
 </body>
 </html>
