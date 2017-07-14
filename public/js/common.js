@@ -6,8 +6,6 @@ define(['jquery','template','cookie'],function($,template){
 		$(this).next().slideToggle();
 	});
 
-	
-
 	// 实现退出功能
 	$("#logout").click(function(){
             $.ajax({
@@ -26,7 +24,7 @@ define(['jquery','template','cookie'],function($,template){
         })
 	// 获取登录的用户信息
 	var info = $.cookie('loginInfo');
-	console.log(info);
+	// console.log(info);
 	//渲染头像信息
 	var tpl = '<div class="avatar img-circle">'
 			+'<img src="{{tc_avatar}}">'

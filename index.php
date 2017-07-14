@@ -19,3 +19,4 @@
         $filename = "login";
     }
     include('./views/'.$pathname.'/'.$filename.'.html');
+?>

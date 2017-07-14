@@ -1,4 +1,5 @@
-define(['echarts'],function(echarts){
+define(['echarts','jquery','util'],function(echarts,$,util){
+    util.setMenu(location.pathname);
     // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
@@ -24,5 +25,4 @@ define(['echarts'],function(echarts){
 
         // // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-
 })
